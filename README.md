@@ -6,15 +6,13 @@ A full-stack task management web application built with **Python, Django and MyS
 
 ## Screenshots
 
-_Add 3 screenshots to a `screenshots` folder and link them here, for example:_
 
-```
 ![Login](screenshots/login.png.png)
 
 ![Task list](screenshots/task-list.png.png)
 
 ![Close](screenshots/close.png.png)
-```
+
 
 ## Features
 
