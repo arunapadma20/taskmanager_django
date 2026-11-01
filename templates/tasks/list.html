@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="stats">
+  <div class="stat"><b>{{ stats.total }}</b><span>Total</span></div>
+  <div class="stat"><b>{{ stats.todo }}</b><span>To Do</span></div>
+  <div class="stat"><b>{{ stats.progress }}</b><span>In Progress</span></div>
+  <div class="stat"><b>{{ stats.done }}</b><span>Done</span></div>
+</div>
+
+<div class="bar">
+  <form method="get" class="filters">
+    <input type="text" name="q" value="{{ q }}" placeholder="Search tasks...">
+    <select name="status"><option value="">All status</option>
+      {% for k, v in status_choices %}<option value="{{ k }}" {% if k == status %}selected{% endif %}>{{ v }}</option>{% endfor %}
+    </select>
+    <select name="priority"><option value="">All priority</option>
+      {% for k, v in priority_choices %}<option value="{{ k }}" {% if k == priority %}selected{% endif %}>{{ v }}</option>{% endfor %}
+    </select>
+    <button class="btn ghost">Filter</button>
+  </form>
+  <a class="btn" href="{% url 'task_create' %}">+ New Task</a>
+</div>
+
+{% for t in tasks %}
+<div class="card p-{{ t.priority }} {% if t.status == 'D' %}done{% endif %}">
+  <form method="post" action="{% url 'task_toggle' t.pk %}">{% csrf_token %}
+    <button class="check" title="Toggle done">{% if t.status == 'D' %}&#10003;{% endif %}</button>
+  </form>
+  <div class="body">
+    <h3>{{ t.title }}</h3>
+    {% if t.description %}<p>{{ t.description|truncatechars:140 }}</p>{% endif %}
+    <div class="meta">
+      <span class="tag pr-{{ t.priority }}">{{ t.get_priority_display }}</span>
+      <span class="tag">{{ t.get_status_display }}</span>
+      {% if t.due_date %}<span class="tag {% if t.overdue %}late{% endif %}">Due {{ t.due_date|date:"d M Y" }}{% if t.overdue %} (overdue){% endif %}</span>{% endif %}
+    </div>
+  </div>
+  <div class="actions">
+    <a class="btn ghost" href="{% url 'task_update' t.pk %}">Edit</a>
+    <a class="btn danger" href="{% url 'task_delete' t.pk %}">Delete</a>
+  </div>
+</div>
+{% empty %}
+<p class="empty">No tasks found. Click "+ New Task" to add one.</p>
+{% endfor %}
+{% endblock %}

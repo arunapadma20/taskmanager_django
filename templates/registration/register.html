@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="panel narrow">
+  <h2>Create account</h2>
+  <form method="post">{% csrf_token %}
+    {% for f in form %}
+      <label>{{ f.label }}</label>{{ f }}
+      {% for e in f.errors %}<small class="err">{{ e }}</small>{% endfor %}
+    {% endfor %}
+    <div class="row"><button class="btn">Sign up</button></div>
+  </form>
+  <p class="muted">Already registered? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock %}
