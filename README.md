@@ -9,9 +9,11 @@ A full-stack task management web application built with **Python, Django and MyS
 _Add 3 screenshots to a `screenshots` folder and link them here, for example:_
 
 ```
-![Task list](screenshots/task-list.png)
-![New task](screenshots/new-task.png)
-![Login](screenshots/login.png)
+![Login](screenshots/login.png.png)
+
+![Task list](screenshots/task-list.png.png)
+
+![Close](screenshots/close.png.png)
 ```
 
 ## Features
