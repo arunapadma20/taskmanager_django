@@ -7,11 +7,11 @@ A full-stack task management web application built with **Python, Django and MyS
 ## Screenshots
 
 
-![Login](screenshots/login.png.png)
+<img src="screenshots/login.png.png" alt="Login" width="600">
 
-![Task list](screenshots/task-list.png.png)
+<img src="screenshots/task-list.png.png" alt="Task list" width="600">
 
-![Close](screenshots/close.png.png)
+<img src="screenshots/close.png.png" alt="Completed task" width="600">
 
 
 ## Features
