@@ -1,19 +1,94 @@
-# TaskFlow - Django Task Management System
+# TaskFlow - Task Management System
 
-Stack: Python, Django, MySQL, HTML, CSS, JavaScript
+A full-stack task management web application built with **Python, Django and MySQL**. Users can sign up, log in and manage their own tasks with priorities, statuses and due dates.
 
-## Setup
-1. python -m venv venv  &&  venv\Scripts\activate   (Linux/Mac: source venv/bin/activate)
-2. pip install -r requirements.txt
-3. In MySQL:  CREATE DATABASE taskmanager_db CHARACTER SET utf8mb4;
-4. Set your MySQL password in config/settings.py (or env var DB_PASSWORD)
-5. python manage.py makemigrations tasks
-6. python manage.py migrate
-7. python manage.py createsuperuser   (optional, for /admin/)
-8. python manage.py runserver  ->  http://127.0.0.1:8000/
+**Live demo:** _add your PythonAnywhere link here_
 
-(To try without MySQL first: set USE_SQLITE=1 before running the commands.)
+## Screenshots
+
+_Add 3 screenshots to a `screenshots` folder and link them here, for example:_
+
+```
+![Task list](screenshots/task-list.png)
+![New task](screenshots/new-task.png)
+![Login](screenshots/login.png)
+```
 
 ## Features
-Register/login, per-user tasks, create/edit/delete, mark done, priority, status,
-due dates with overdue highlight, search and filters, dashboard counts.
+
+- User registration, login and logout
+- Each user sees only their own tasks
+- Create, edit and delete tasks
+- Mark tasks as done with one click
+- Priority (Low, Medium, High) and status (To Do, In Progress, Done)
+- Due dates with overdue highlighting
+- Search and filters by status and priority
+- Dashboard with task counts
+- Django admin panel
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Backend | Python, Django 5.2 |
+| Database | MySQL 8.0 (SQLite supported for quick testing) |
+| Frontend | HTML, CSS, JavaScript |
+| Tools | Git, GitHub, VS Code |
+
+## Project Structure
+
+```
+taskmanager/
+├── config/        # Django settings and URLs
+├── tasks/         # Models, views, forms, URLs
+├── templates/     # HTML templates
+├── static/        # CSS and JavaScript
+├── manage.py
+└── requirements.txt
+```
+
+## Setup (Windows)
+
+1. Clone the repository
+   ```
+   git clone https://github.com/arunapadma20/taskmanager_django.git
+   cd taskmanager_django
+   ```
+2. Create and activate a virtual environment
+   ```
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+3. Install packages
+   ```
+   pip install -r requirements.txt
+   ```
+4. Create the MySQL database
+   ```sql
+   CREATE DATABASE taskmanager_db CHARACTER SET utf8mb4;
+   ```
+5. Set your database credentials (environment variables)
+   ```
+   $env:DB_USER='your_mysql_user'
+   $env:DB_PASSWORD='your_mysql_password'
+   ```
+6. Create the tables and run the server
+   ```
+   python manage.py makemigrations tasks
+   python manage.py migrate
+   python manage.py runserver
+   ```
+7. Open http://127.0.0.1:8000/
+
+To try the app without MySQL, set `USE_SQLITE=1` before step 6.
+
+## What I Learned
+
+- Building a full CRUD application with Django models, views and templates
+- User authentication and per-user data access
+- Connecting Django to MySQL and managing configuration with environment variables
+- Version control with Git and GitHub
+
+## Author
+
+Aruna P - [GitHub](https://github.com/arunapadma20)
